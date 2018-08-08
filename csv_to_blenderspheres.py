@@ -9,11 +9,10 @@ def generate_blender_line(coordinates, blenderLayer):
 
 def write_blender_script(outputFile):
     #Iterates through list of xyz coordinates, then writes each line of Blender code to an output file
-    #
     coordLayer = 0  			#designates the desired Blender layer to add sphere objects to. Layer 1 in Blender = coordLayer 0
     with open(outputFile, 'w') as out:
         for xyz in coordList:
-            if xyz == ',,' or '':
+            if xyz == ',,' or '':       #increases blender layer for coordinates following a blank line in the csv file
                 coordLayer +=1
             else:
                 line = generate_blender_line(xyz, coordLayer)
